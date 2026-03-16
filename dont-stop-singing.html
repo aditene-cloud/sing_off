@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>לא נפסיק לשיר!</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800;900&family=Secular+One&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Rubik',sans-serif;background:#0a0a1a;color:#f5f5f5;min-height:100vh;min-height:100dvh;-webkit-user-select:none;user-select:none;overflow-x:hidden}
+.app{max-width:500px;margin:0 auto;padding:12px;text-align:center}
+h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margin-bottom:2px}
+.h1a{background:linear-gradient(135deg,#f368e0,#ff6b6b,#feca57);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:#8888aa;font-size:.8rem;margin-bottom:14px}
+.sb{display:flex;gap:10px;justify-content:center;margin-bottom:10px}
+.sb-box{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.08);border-radius:14px;padding:10px 18px;min-width:120px;transition:.3s}
+.sb-box.on{border-color:rgba(243,104,224,.5);box-shadow:0 0 20px rgba(243,104,224,.12)}
+.sb-lab{font-size:.75rem;color:#8888aa;margin-bottom:1px}
+.sb-pts{font-family:'Secular One',sans-serif;font-size:2.2rem}
+.sb-btns{margin-top:3px}
+.sb-btn{width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#f5f5f5;font-size:1rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin:0 2px;transition:.15s}
+.sb-btn:hover{background:rgba(255,255,255,.15)}
+.round-info{font-family:'Secular One',sans-serif;font-size:clamp(.8rem,2.5vw,1rem);color:#f368e0;margin-bottom:12px}
+.opt-section{margin:14px 0}
+.opt-label{font-size:.85rem;color:#ccc;margin-bottom:8px;font-weight:600}
+.opt-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.opt-btn{font-family:'Rubik',sans-serif;font-size:.85rem;font-weight:600;background:rgba(255,255,255,.08);color:#8888aa;border:2px solid rgba(255,255,255,.08);border-radius:11px;padding:8px 16px;cursor:pointer;transition:.2s;min-width:70px}
+.opt-btn:hover{background:rgba(255,255,255,.14);color:#f5f5f5}
+.opt-btn.act{background:rgba(243,104,224,.15);color:#f368e0;border-color:#f368e0}
+.word-box{margin:14px auto;padding:20px 14px;background:linear-gradient(145deg,#1e1e3a,#16162b);border:2px solid rgba(243,104,224,.15);border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.4);min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.word-text{font-family:'Secular One',sans-serif;font-size:clamp(2rem,8vw,3.2rem);background:linear-gradient(135deg,#f368e0,#ff6b6b,#feca57);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}
+.word-hint{font-size:.7rem;color:#8888aa;margin-top:4px}
+.word-box.tb{border-color:rgba(255,107,107,.4);box-shadow:0 8px 40px rgba(255,107,107,.15)}
+.word-box.tb .word-text{background:linear-gradient(135deg,#ff6b6b,#feca57);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.timer-num{font-family:'Secular One',sans-serif;font-size:clamp(2.6rem,9vw,3.6rem);font-variant-numeric:tabular-nums;transition:color .3s;line-height:1;margin-top:6px}
+.timer-num.warn{color:#ff6b6b;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.tbar{width:100%;height:7px;background:rgba(255,255,255,.08);border-radius:4px;margin:6px 0 8px;overflow:hidden}
+.tfill{height:100%;border-radius:4px;transition:width .25s linear}
+.tfill.t1{background:linear-gradient(90deg,#54a0ff,#2e86de)}
+.tfill.t2{background:linear-gradient(90deg,#f368e0,#ff6b6b)}
+.tfill.warn{background:linear-gradient(90deg,#ff6b6b,#feca57)}
+.turn-label{font-family:'Secular One',sans-serif;font-size:clamp(1rem,3vw,1.2rem);margin-bottom:4px}
+.t1-color{color:#54a0ff}.t2-color{color:#f368e0}
+.btn-row{display:flex;gap:8px;justify-content:center;margin:10px 0;flex-wrap:wrap}
+.btn{font-family:'Rubik',sans-serif;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:.2s}
+.btn:active{transform:scale(.93)}
+.btn-big{font-size:1rem;padding:11px 24px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn-big:hover{transform:translateY(-2px)}
+.btn-start{background:linear-gradient(135deg,#f368e0,#ff6b6b);color:#fff}
+.btn-next{background:linear-gradient(135deg,#feca57,#ff9f43);color:#1a1a2e}
+.btn-timer{background:linear-gradient(135deg,#1dd1a1,#10ac84);color:#fff}
+.btn-pause{background:linear-gradient(135deg,#feca57,#ff9f43);color:#1a1a2e}
+.btn-stop{font-size:.8rem;padding:7px 14px;background:rgba(255,107,107,.15);color:#ff6b6b;border:1px solid rgba(255,107,107,.25);border-radius:10px;margin-top:6px}
+.btn-stop:hover{background:rgba(255,107,107,.25)}
+.contest{margin:12px 0;padding:12px;background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.2);border-radius:14px}
+.contest h3{font-family:'Secular One',sans-serif;font-size:1.05rem;color:#ff6b6b;margin-bottom:6px}
+.contest p{font-size:.78rem;color:#aaa;margin-bottom:8px}
+.cbtn{font-family:'Rubik',sans-serif;font-weight:700;font-size:.88rem;border:none;border-radius:11px;padding:9px 18px;cursor:pointer;transition:.2s;margin:0 3px}
+.cbtn:active{transform:scale(.93)}
+.c-t1{background:linear-gradient(135deg,#54a0ff,#2e86de);color:#fff}
+.c-t2{background:linear-gradient(135deg,#f368e0,#ff6b6b);color:#fff}
+.c-skip{background:rgba(255,255,255,.1);color:#aaa}
+.re-count{display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0}
+.re-num{font-family:'Secular One',sans-serif;font-size:2.8rem}
+.re-adj{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#f5f5f5;font-size:1.2rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.nr-btn{font-family:'Rubik',sans-serif;font-weight:700;font-size:1rem;background:linear-gradient(135deg,#feca57,#ff9f43);color:#1a1a2e;border:none;border-radius:12px;padding:11px 26px;cursor:pointer;transition:.2s}
+.nr-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(254,202,87,.4)}
+.brow{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.bbtn{font-family:'Rubik',sans-serif;font-size:.76rem;font-weight:600;background:rgba(255,255,255,.06);color:#8888aa;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:5px 12px;cursor:pointer;transition:.2s}
+.bbtn:hover{background:rgba(255,255,255,.1);color:#f5f5f5}
+.ov{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,26,.95);display:flex;align-items:center;justify-content:center;z-index:100;padding:12px}
+.ov-box{background:#1e1e3a;border-radius:20px;padding:24px 18px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.5);max-width:400px;width:100%}
+.ov-box h2{font-family:'Secular One',sans-serif;font-size:1.6rem;margin-bottom:8px}
+.gold{color:#feca57}.green{color:#1dd1a1}
+.ov-box p{color:#aaa;margin-bottom:10px;font-size:.88rem;line-height:1.5}
+.ov-scores{display:flex;gap:12px;justify-content:center;margin:12px 0}
+.ov-ts{background:rgba(255,255,255,.05);border-radius:14px;padding:10px 18px;min-width:110px}
+.ov-ts .lab{font-size:.78rem;color:#8888aa}
+.ov-ts .pts{font-family:'Secular One',sans-serif;font-size:2rem}
+.tb-label{font-family:'Secular One',sans-serif;font-size:1.2rem;color:#ff6b6b;margin:10px 0 6px}
+.tb-hint{font-size:.78rem;color:#aaa;margin-bottom:10px}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="app">
+  <h1><span class="h1a">🎤 לא נפסיק לשיר!</span></h1>
+  <p class="sub">שירו כמה שיותר שירים עם המילה שעל המסך</p>
+
+  <div id="sbWrap" class="hidden">
+    <div class="sb">
+      <div class="sb-box on" id="sb1"><div class="sb-lab">קבוצה 1</div><div class="sb-pts" id="sp1">0</div><div class="sb-btns"><button class="sb-btn" onclick="sc(0,-1)">−</button><button class="sb-btn" onclick="sc(0,1)">+</button></div></div>
+      <div class="sb-box" id="sb2"><div class="sb-lab">קבוצה 2</div><div class="sb-pts" id="sp2">0</div><div class="sb-btns"><button class="sb-btn" onclick="sc(1,-1)">−</button><button class="sb-btn" onclick="sc(1,1)">+</button></div></div>
+    </div>
+    <div class="round-info" id="roundInfo"></div>
+  </div>
+
+  <div id="phConfig">
+    <div class="opt-section"><div class="opt-label">⏱ זמן לכל סבב</div><div class="opt-row">
+      <button class="opt-btn" onclick="pickDur(30,this)">30 שניות</button>
+      <button class="opt-btn" onclick="pickDur(45,this)">45 שניות</button>
+      <button class="opt-btn act" onclick="pickDur(60,this)">60 שניות</button>
+    </div></div>
+    <div class="opt-section"><div class="opt-label">🔄 מספר סבבים</div><div class="opt-row">
+      <button class="opt-btn" onclick="pickR(5,this)">5</button>
+      <button class="opt-btn act" onclick="pickR(10,this)">10</button>
+      <button class="opt-btn" onclick="pickR(15,this)">15</button>
+      <button class="opt-btn" onclick="pickR(20,this)">20</button>
+    </div><div style="font-size:.7rem;color:#666;margin-top:4px">(כל קבוצה תקבל חצי מהסבבים)</div></div>
+    <div class="btn-row" style="margin-top:18px"><button class="btn btn-big btn-start" onclick="beginGame()">🎤 יאללה מתחילים!</button></div>
+  </div>
+
+  <div id="phSetup" class="hidden">
+    <div class="word-box"><div class="word-text" id="setupWord"></div><div class="word-hint">המילה לסבב הבא</div></div>
+    <div class="btn-row">
+      <button class="btn btn-big btn-start" onclick="startRound()">🎤 יאללה שרים!</button>
+      <button class="btn btn-big btn-next" onclick="newWord()">מילה אחרת</button>
+    </div>
+    <button class="btn btn-stop" onclick="stopGame()">⏹ הפסק משחק</button>
+  </div>
+
+  <div id="phPlay" class="hidden">
+    <div class="turn-label" id="turnLabel"></div>
+    <div class="word-box" style="margin:8px auto"><div class="word-text" id="playWord"></div></div>
+    <div class="timer-num" id="tDisp">01:00</div>
+    <div class="tbar"><div class="tfill t1" id="tFill" style="width:100%"></div></div>
+    <div class="btn-row">
+      <button class="btn btn-big btn-timer" id="btnGo" onclick="startTimer()">▶ התחל</button>
+      <button class="btn btn-big btn-pause hidden" id="btnPause" onclick="pauseTimer()">⏸ עצור</button>
+    </div>
+    <button class="btn btn-stop" onclick="stopGame()">⏹ הפסק משחק</button>
+  </div>
+
+  <div id="phContest" class="hidden">
+    <div class="word-box" style="margin:8px auto"><div class="word-text" id="contestWord"></div></div>
+    <div class="contest"><h3>⏰ נגמר הזמן!</h3><p>המילה פתוחה לכולם — מי שר ראשון?</p><div>
+      <button class="cbtn c-t1" onclick="contest(0)">קבוצה 1</button>
+      <button class="cbtn c-t2" onclick="contest(1)">קבוצה 2</button>
+      <button class="cbtn c-skip" onclick="contest(-1)">אף אחד</button>
+    </div></div>
+  </div>
+
+  <div id="phRoundEnd" class="hidden">
+    <div class="turn-label" id="reTitle"></div>
+    <p style="color:#aaa;font-size:.88rem;margin:6px 0" id="reAsk"></p>
+    <div class="re-count"><button class="re-adj" onclick="adjR(-1)">−</button><span class="re-num" id="reCount">0</span><button class="re-adj" onclick="adjR(1)">+</button></div>
+    <button class="nr-btn" id="reBtn" onclick="finishRound()">אישור וסבב הבא →</button>
+  </div>
+
+  <div id="phTiebreak" class="hidden">
+    <div class="tb-label">⚡ שובר שוויון!</div>
+    <div class="tb-hint">אין הגבלת זמן — הקבוצה הראשונה שמוצאת שיר עם המילה מנצחת!</div>
+    <div class="word-box tb"><div class="word-text" id="tbWord"></div></div>
+    <div class="btn-row" style="margin-top:12px">
+      <button class="cbtn c-t1" style="font-size:1rem;padding:11px 24px" onclick="tbWin(0)">🎤 קבוצה 1</button>
+      <button class="cbtn c-t2" style="font-size:1rem;padding:11px 24px" onclick="tbWin(1)">🎤 קבוצה 2</button>
+    </div>
+    <div class="btn-row"><button class="btn btn-next" style="font-size:.85rem;padding:8px 18px" onclick="newTbWord()">מילה אחרת</button></div>
+  </div>
+
+  <div class="brow"><button class="bbtn" onclick="fullReset()">משחק חדש</button></div>
+</div>
+
+<div class="ov hidden" id="ovEnd">
+  <div class="ov-box">
+    <h2 id="endTitle"></h2>
+    <p id="endMsg"></p>
+    <div class="ov-scores">
+      <div class="ov-ts"><div class="lab">קבוצה 1</div><div class="pts" id="oe1">0</div></div>
+      <div class="ov-ts"><div class="lab">קבוצה 2</div><div class="pts" id="oe2">0</div></div>
+    </div>
+    <div class="btn-row" id="endBtns"></div>
+  </div>
+</div>
+
+<script>
+const easyWords=["אהבה","לב","שמש","ירח","כוכב","גשם","רוח","ים","לילה","בוקר","חלום","דרך","בית","עיניים","ילד","אמא","אבא","חבר","שיר","מוזיקה","ריקוד","אור","חושך","פרח","עולם","שמיים","מים","אש","ארץ","זמן","נשמה","מלאך","גן","עץ","ציפור","שלום","חופש","חיים","יום","ערב","צבע","לבן","אדום","כחול","ירוק","זהב","רחוב","עיר","הר","נהר","שמחה","דמעה","חיוך","צחוק","כאב","תקווה","אמונה","מסע","רכבת","כביש","ילדות","זיכרון","סיפור","ספר","חופשה","חתונה","טבעת","שמלה","תמונה","צל","כדור","ענן","ברק","קשת","שלג","קיץ","חורף","אביב","שבת","לחם","יין","תפוח","דבש","עוגה","גלידה","קפה","כלב","חתול","סוס","פרפר","ארנב","אריה","יונה","מלך","מלכה","נסיכה","גיבור","שער","ניצחון","קול","שקט","מנגינה","ירושלים","תל אביב","חיפה","נגב","כנרת","ישראל","רגע","סוף","התחלה","משפחה","אח","אחות","סבא","סבתא","תינוק","חג","נר","מתנה","בלון","יום הולדת","שנה","דקה","לבד","ביחד","רחוק","קרוב","גבוה","עמוק","חזק","רך","מהר","לאט"];
+const hardWords=["מפתח","גבול","צמיחה","מראה","צעיף","פעמון","ספסל","מגדלור","ערש","סביבון","תופים","כינור","פסנתר","חצוצרה","מזמור","פזמון","תזמורת","מסלול","תחנה","פרשת דרכים","מפרש","עוגן","נמל","מצפה","אופק","מגדל","צוק","מערה","מעיין","הדים","בבואה","משב רוח","שביל החלב","זכוכית","משי","קטיפה","ענבר","אלמוג","פנינה","מסכה","קלידים","קסם","להבה","ניצוץ","אפר","עשן","דיו","חותם","מגילה","כתר","חרב","מגן","חומה","מפה","אבק","חלודה","שעווה","גחלים","מצפן","עדשה","תריס","ציר","מפרץ","שובל","כרכרה","ארובה","משקולת","פרגוד","אשליה","הד"];
+
+function sh(a){for(let i=a.length-1;i>0;i--){const j=0|Math.random()*(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+
+let pool=[...easyWords];sh(pool);
+let hardPool=[...hardWords];sh(hardPool);
+let wi=0,hi=0,round=0,scores=[0,0],dur=60,totalRounds=10,tiv=null,rem=60,roundCount=0;
+
+function curTeam(){return round%2===0?0:1}
+function tn(t){return'קבוצה '+(t+1)}
+function curWord(){return pool[wi%pool.length]}
+function curHardWord(){return hardPool[hi%hardPool.length]}
+
+function updateSB(){
+  document.getElementById('sp1').textContent=scores[0];
+  document.getElementById('sp2').textContent=scores[1];
+  const ct=curTeam();
+  document.getElementById('sb1').classList.toggle('on',ct===0);
+  document.getElementById('sb2').classList.toggle('on',ct===1);
+  document.getElementById('roundInfo').textContent=`סבב ${Math.min(round+1,totalRounds)} מתוך ${totalRounds} · תור ${tn(ct)}`;
+}
+function sc(t,d){scores[t]=Math.max(0,scores[t]+d);updateSB()}
+function showPh(id){['phConfig','phSetup','phPlay','phContest','phRoundEnd','phTiebreak'].forEach(p=>document.getElementById(p).classList.add('hidden'));document.getElementById(id).classList.remove('hidden')}
+
+function pickDur(s,el){dur=s;el.parentElement.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('act'));el.classList.add('act')}
+function pickR(n,el){totalRounds=n;el.parentElement.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('act'));el.classList.add('act')}
+
+function beginGame(){
+  scores=[0,0];round=0;wi=0;sh(pool);sh(hardPool);
+  document.getElementById('sbWrap').classList.remove('hidden');
+  document.getElementById('setupWord').textContent=curWord();
+  updateSB();showPh('phSetup');
+}
+
+function newWord(){wi++;document.getElementById('setupWord').textContent=curWord()}
+
+function startRound(){
+  const w=curWord();const ct=curTeam();
+  document.getElementById('playWord').textContent=w;
+  const lbl=document.getElementById('turnLabel');
+  lbl.textContent=`תור ${tn(ct)}`;lbl.className='turn-label '+(ct===0?'t1-color':'t2-color');
+  document.getElementById('tFill').className='tfill '+(ct===0?'t1':'t2');
+  rem=dur;updateTimerDisp();
+  document.getElementById('btnGo').classList.remove('hidden');
+  document.getElementById('btnGo').textContent='▶ התחל';
+  document.getElementById('btnPause').classList.add('hidden');
+  showPh('phPlay');
+}
+
+function updateTimerDisp(){
+  const m=Math.floor(rem/60),s=rem%60;
+  const d=document.getElementById('tDisp');
+  d.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const w=rem<=10;d.classList.toggle('warn',w);
+  const f=document.getElementById('tFill');
+  f.style.width=((rem/dur)*100)+'%';if(w)f.classList.add('warn');
+}
+
+function startTimer(){
+  document.getElementById('btnGo').classList.add('hidden');
+  document.getElementById('btnPause').classList.remove('hidden');
+  tiv=setInterval(()=>{rem--;updateTimerDisp();if(rem<=0){clearInterval(tiv);tiv=null;timesUp()}},1000);
+}
+function pauseTimer(){
+  if(tiv){clearInterval(tiv);tiv=null;
+    document.getElementById('btnPause').classList.add('hidden');
+    document.getElementById('btnGo').classList.remove('hidden');
+    document.getElementById('btnGo').textContent='▶ המשך';
+  }
+}
+function timesUp(){document.getElementById('contestWord').textContent=curWord();showPh('phContest')}
+
+function contest(team){
+  if(team>=0)scores[team]++;updateSB();
+  roundCount=0;const ct=curTeam();
+  document.getElementById('reTitle').textContent=`סיום סבב — ${tn(ct)}`;
+  document.getElementById('reTitle').className='turn-label '+(ct===0?'t1-color':'t2-color');
+  document.getElementById('reAsk').textContent=`כמה שירים ${tn(ct)} שרה בסבב?`;
+  document.getElementById('reCount').textContent='0';
+  document.getElementById('reBtn').textContent=round>=totalRounds-1?'סיום משחק 🏆':`אישור → סבב ${round+2}`;
+  showPh('phRoundEnd');
+}
+function adjR(d){roundCount=Math.max(0,roundCount+d);document.getElementById('reCount').textContent=roundCount}
+
+function finishRound(){
+  scores[curTeam()]+=roundCount;updateSB();
+  if(round>=totalRounds-1){showEndScreen();return}
+  round++;wi++;
+  document.getElementById('setupWord').textContent=curWord();
+  updateSB();showPh('phSetup');
+}
+
+function stopGame(){if(tiv){clearInterval(tiv);tiv=null}showEndScreen()}
+
+function showEndScreen(){
+  document.getElementById('oe1').textContent=scores[0];
+  document.getElementById('oe2').textContent=scores[1];
+  const b=document.getElementById('endBtns');
+  if(scores[0]>scores[1]){
+    document.getElementById('endTitle').innerHTML='<span class="green">🎉 קבוצה 1 ניצחה!</span>';
+    document.getElementById('endMsg').textContent=`${scores[0]} לעומת ${scores[1]} שירים`;
+    b.innerHTML='<button class="nr-btn" onclick="fullReset()">משחק חדש</button>';
+  }else if(scores[1]>scores[0]){
+    document.getElementById('endTitle').innerHTML='<span class="green">🎉 קבוצה 2 ניצחה!</span>';
+    document.getElementById('endMsg').textContent=`${scores[1]} לעומת ${scores[0]} שירים`;
+    b.innerHTML='<button class="nr-btn" onclick="fullReset()">משחק חדש</button>';
+  }else{
+    document.getElementById('endTitle').innerHTML='<span class="gold">🤝 תיקו!</span>';
+    document.getElementById('endMsg').textContent=`${scores[0]} שירים לכל קבוצה`;
+    b.innerHTML='<button class="nr-btn" onclick="startTiebreak()">⚡ שובר שוויון</button><br><button class="bbtn" onclick="fullReset()" style="margin-top:10px">משחק חדש</button>';
+  }
+  document.getElementById('ovEnd').classList.remove('hidden');
+}
+
+function startTiebreak(){
+  document.getElementById('ovEnd').classList.add('hidden');
+  hi++;document.getElementById('tbWord').textContent=curHardWord();
+  showPh('phTiebreak');
+}
+function newTbWord(){hi++;document.getElementById('tbWord').textContent=curHardWord()}
+function tbWin(team){
+  scores[team]++;updateSB();
+  document.getElementById('oe1').textContent=scores[0];
+  document.getElementById('oe2').textContent=scores[1];
+  document.getElementById('endTitle').innerHTML=`<span class="green">🎉 ${tn(team)} ניצחה!</span>`;
+  document.getElementById('endMsg').textContent='ניצחון בשובר שוויון!';
+  document.getElementById('endBtns').innerHTML='<button class="nr-btn" onclick="fullReset()">משחק חדש</button>';
+  showPh('phConfig');document.getElementById('ovEnd').classList.remove('hidden');
+}
+
+function fullReset(){
+  if(tiv){clearInterval(tiv);tiv=null}
+  scores=[0,0];round=0;wi=0;hi=0;roundCount=0;sh(pool);sh(hardPool);
+  document.getElementById('ovEnd').classList.add('hidden');
+  document.getElementById('sbWrap').classList.add('hidden');
+  showPh('phConfig');
+}
+</script>
+</body>
+</html>
