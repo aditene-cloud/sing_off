@@ -18,15 +18,16 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
 .sb-lab{font-size:.75rem;color:#8888aa;margin-bottom:1px}
 .sb-pts{font-family:'Secular One',sans-serif;font-size:2.2rem}
 .sb-btns{margin-top:3px}
-.sb-btn{width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#f5f5f5;font-size:1rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin:0 2px;transition:.15s}
+.sb-btn{width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#f5f5f5;font-size:1rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin:0 2px}
 .sb-btn:hover{background:rgba(255,255,255,.15)}
 .round-info{font-family:'Secular One',sans-serif;font-size:clamp(.8rem,2.5vw,1rem);color:#f368e0;margin-bottom:12px}
 .opt-section{margin:14px 0}
 .opt-label{font-size:.85rem;color:#ccc;margin-bottom:8px;font-weight:600}
 .opt-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.opt-btn{font-family:'Rubik',sans-serif;font-size:.85rem;font-weight:600;background:rgba(255,255,255,.08);color:#8888aa;border:2px solid rgba(255,255,255,.08);border-radius:11px;padding:8px 16px;cursor:pointer;transition:.2s;min-width:70px}
+.opt-btn{font-family:'Rubik',sans-serif;font-size:.85rem;font-weight:600;background:rgba(255,255,255,.08);color:#8888aa;border:2px solid rgba(255,255,255,.08);border-radius:11px;padding:8px 16px;cursor:pointer;transition:.2s;min-width:60px}
 .opt-btn:hover{background:rgba(255,255,255,.14);color:#f5f5f5}
 .opt-btn.act{background:rgba(243,104,224,.15);color:#f368e0;border-color:#f368e0}
+.opt-hint{font-size:.7rem;color:#666;margin-top:4px}
 .word-box{margin:14px auto;padding:20px 14px;background:linear-gradient(145deg,#1e1e3a,#16162b);border:2px solid rgba(243,104,224,.15);border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.4);min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .word-text{font-family:'Secular One',sans-serif;font-size:clamp(2rem,8vw,3.2rem);background:linear-gradient(135deg,#f368e0,#ff6b6b,#feca57);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}
 .word-hint{font-size:.7rem;color:#8888aa;margin-top:4px}
@@ -45,14 +46,34 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
 .btn-row{display:flex;gap:8px;justify-content:center;margin:10px 0;flex-wrap:wrap}
 .btn{font-family:'Rubik',sans-serif;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:.2s}
 .btn:active{transform:scale(.93)}
-.btn-big{font-size:1rem;padding:11px 24px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn-big{font-size:1rem;padding:11px 24px}
 .btn-big:hover{transform:translateY(-2px)}
-.btn-start{background:linear-gradient(135deg,#f368e0,#ff6b6b);color:#fff}
-.btn-next{background:linear-gradient(135deg,#feca57,#ff9f43);color:#1a1a2e}
-.btn-timer{background:linear-gradient(135deg,#1dd1a1,#10ac84);color:#fff}
+.btn-start{background:linear-gradient(135deg,#f368e0,#ff6b6b);color:#fff;box-shadow:0 4px 16px rgba(243,104,224,.25)}
+.btn-next{background:linear-gradient(135deg,#feca57,#ff9f43);color:#1a1a2e;box-shadow:0 4px 16px rgba(254,202,87,.25)}
+.btn-timer{background:linear-gradient(135deg,#1dd1a1,#10ac84);color:#fff;box-shadow:0 4px 16px rgba(29,209,161,.25)}
 .btn-pause{background:linear-gradient(135deg,#feca57,#ff9f43);color:#1a1a2e}
 .btn-stop{font-size:.8rem;padding:7px 14px;background:rgba(255,107,107,.15);color:#ff6b6b;border:1px solid rgba(255,107,107,.25);border-radius:10px;margin-top:6px}
 .btn-stop:hover{background:rgba(255,107,107,.25)}
+/* Score button during play */
+.score-btn-big{
+  font-family:'Secular One',sans-serif;font-size:1.4rem;
+  width:60px;height:60px;border-radius:50%;border:none;
+  background:linear-gradient(135deg,#1dd1a1,#10ac84);color:#fff;
+  cursor:pointer;transition:.2s;box-shadow:0 4px 16px rgba(29,209,161,.3);
+  display:flex;align-items:center;justify-content:center;
+}
+.score-btn-big:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(29,209,161,.45)}
+.score-btn-big:active{transform:scale(.9)}
+.live-score{font-family:'Secular One',sans-serif;font-size:1.8rem;color:#1dd1a1;margin:4px 0}
+.live-score-label{font-size:.78rem;color:#8888aa}
+.score-area{display:flex;align-items:center;justify-content:center;gap:14px;margin:8px 0}
+.score-minus{
+  width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,107,107,.3);
+  background:rgba(255,107,107,.1);color:#ff6b6b;font-size:1.1rem;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;
+}
+.score-minus:hover{background:rgba(255,107,107,.2)}
+
 .contest{margin:12px 0;padding:12px;background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.2);border-radius:14px}
 .contest h3{font-family:'Secular One',sans-serif;font-size:1.05rem;color:#ff6b6b;margin-bottom:6px}
 .contest p{font-size:.78rem;color:#aaa;margin-bottom:8px}
@@ -61,9 +82,6 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
 .c-t1{background:linear-gradient(135deg,#54a0ff,#2e86de);color:#fff}
 .c-t2{background:linear-gradient(135deg,#f368e0,#ff6b6b);color:#fff}
 .c-skip{background:rgba(255,255,255,.1);color:#aaa}
-.re-count{display:flex;align-items:center;justify-content:center;gap:12px;margin:10px 0}
-.re-num{font-family:'Secular One',sans-serif;font-size:2.8rem}
-.re-adj{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#f5f5f5;font-size:1.2rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .nr-btn{font-family:'Rubik',sans-serif;font-weight:700;font-size:1rem;background:linear-gradient(135deg,#feca57,#ff9f43);color:#1a1a2e;border:none;border-radius:12px;padding:11px 26px;cursor:pointer;transition:.2s}
 .nr-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(254,202,87,.4)}
 .brow{display:flex;gap:8px;justify-content:center;margin-top:8px}
@@ -80,6 +98,7 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
 .ov-ts .pts{font-family:'Secular One',sans-serif;font-size:2rem}
 .tb-label{font-family:'Secular One',sans-serif;font-size:1.2rem;color:#ff6b6b;margin:10px 0 6px}
 .tb-hint{font-size:.78rem;color:#aaa;margin-bottom:10px}
+.round-summary{background:rgba(255,255,255,.04);border-radius:12px;padding:10px;margin:10px 0;font-size:.88rem;color:#ccc;line-height:1.6}
 .hidden{display:none!important}
 </style>
 </head>
@@ -90,27 +109,44 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
 
   <div id="sbWrap" class="hidden">
     <div class="sb">
-      <div class="sb-box on" id="sb1"><div class="sb-lab">קבוצה 1</div><div class="sb-pts" id="sp1">0</div><div class="sb-btns"><button class="sb-btn" onclick="sc(0,-1)">−</button><button class="sb-btn" onclick="sc(0,1)">+</button></div></div>
-      <div class="sb-box" id="sb2"><div class="sb-lab">קבוצה 2</div><div class="sb-pts" id="sp2">0</div><div class="sb-btns"><button class="sb-btn" onclick="sc(1,-1)">−</button><button class="sb-btn" onclick="sc(1,1)">+</button></div></div>
+      <div class="sb-box on" id="sb1"><div class="sb-lab">קבוצה 1</div><div class="sb-pts" id="sp1">0</div></div>
+      <div class="sb-box" id="sb2"><div class="sb-lab">קבוצה 2</div><div class="sb-pts" id="sp2">0</div></div>
     </div>
     <div class="round-info" id="roundInfo"></div>
   </div>
 
+  <!-- CONFIG -->
   <div id="phConfig">
-    <div class="opt-section"><div class="opt-label">⏱ זמן לכל סבב</div><div class="opt-row">
-      <button class="opt-btn" onclick="pickDur(30,this)">30 שניות</button>
-      <button class="opt-btn" onclick="pickDur(45,this)">45 שניות</button>
-      <button class="opt-btn act" onclick="pickDur(60,this)">60 שניות</button>
-    </div></div>
-    <div class="opt-section"><div class="opt-label">🔄 מספר סבבים</div><div class="opt-row">
-      <button class="opt-btn" onclick="pickR(5,this)">5</button>
-      <button class="opt-btn act" onclick="pickR(10,this)">10</button>
-      <button class="opt-btn" onclick="pickR(15,this)">15</button>
-      <button class="opt-btn" onclick="pickR(20,this)">20</button>
-    </div><div style="font-size:.7rem;color:#666;margin-top:4px">(כל קבוצה תקבל חצי מהסבבים)</div></div>
+    <div class="opt-section">
+      <div class="opt-label">🌍 שפת המילים</div>
+      <div class="opt-row">
+        <button class="opt-btn act" onclick="pickLang('he',this)">עברית</button>
+        <button class="opt-btn" onclick="pickLang('en',this)">English</button>
+        <button class="opt-btn" onclick="pickLang('both',this)">גם וגם</button>
+      </div>
+    </div>
+    <div class="opt-section">
+      <div class="opt-label">⏱ זמן לכל סבב</div>
+      <div class="opt-row">
+        <button class="opt-btn" onclick="pickDur(30,this)">30 שניות</button>
+        <button class="opt-btn" onclick="pickDur(45,this)">45 שניות</button>
+        <button class="opt-btn act" onclick="pickDur(60,this)">60 שניות</button>
+      </div>
+    </div>
+    <div class="opt-section">
+      <div class="opt-label">🔄 מספר סבבים</div>
+      <div class="opt-row">
+        <button class="opt-btn" onclick="pickR(5,this)">5</button>
+        <button class="opt-btn act" onclick="pickR(10,this)">10</button>
+        <button class="opt-btn" onclick="pickR(15,this)">15</button>
+        <button class="opt-btn" onclick="pickR(20,this)">20</button>
+      </div>
+      <div class="opt-hint">(כל קבוצה תקבל חצי מהסבבים)</div>
+    </div>
     <div class="btn-row" style="margin-top:18px"><button class="btn btn-big btn-start" onclick="beginGame()">🎤 יאללה מתחילים!</button></div>
   </div>
 
+  <!-- PRE-ROUND -->
   <div id="phSetup" class="hidden">
     <div class="word-box"><div class="word-text" id="setupWord"></div><div class="word-hint">המילה לסבב הבא</div></div>
     <div class="btn-row">
@@ -120,11 +156,20 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
     <button class="btn btn-stop" onclick="stopGame()">⏹ הפסק משחק</button>
   </div>
 
+  <!-- PLAYING -->
   <div id="phPlay" class="hidden">
     <div class="turn-label" id="turnLabel"></div>
     <div class="word-box" style="margin:8px auto"><div class="word-text" id="playWord"></div></div>
     <div class="timer-num" id="tDisp">01:00</div>
     <div class="tbar"><div class="tfill t1" id="tFill" style="width:100%"></div></div>
+
+    <div class="live-score-label">שירים בסבב</div>
+    <div class="score-area">
+      <button class="score-minus" onclick="roundMinus()">−</button>
+      <div class="live-score" id="liveScore">0</div>
+      <button class="score-btn-big" onclick="roundPlus()">+1</button>
+    </div>
+
     <div class="btn-row">
       <button class="btn btn-big btn-timer" id="btnGo" onclick="startTimer()">▶ התחל</button>
       <button class="btn btn-big btn-pause hidden" id="btnPause" onclick="pauseTimer()">⏸ עצור</button>
@@ -132,6 +177,7 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
     <button class="btn btn-stop" onclick="stopGame()">⏹ הפסק משחק</button>
   </div>
 
+  <!-- CONTEST -->
   <div id="phContest" class="hidden">
     <div class="word-box" style="margin:8px auto"><div class="word-text" id="contestWord"></div></div>
     <div class="contest"><h3>⏰ נגמר הזמן!</h3><p>המילה פתוחה לכולם — מי שר ראשון?</p><div>
@@ -141,13 +187,14 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
     </div></div>
   </div>
 
+  <!-- ROUND END -->
   <div id="phRoundEnd" class="hidden">
     <div class="turn-label" id="reTitle"></div>
-    <p style="color:#aaa;font-size:.88rem;margin:6px 0" id="reAsk"></p>
-    <div class="re-count"><button class="re-adj" onclick="adjR(-1)">−</button><span class="re-num" id="reCount">0</span><button class="re-adj" onclick="adjR(1)">+</button></div>
-    <button class="nr-btn" id="reBtn" onclick="finishRound()">אישור וסבב הבא →</button>
+    <div class="round-summary" id="reSummary"></div>
+    <button class="nr-btn" id="reBtn" onclick="finishRound()">סבב הבא →</button>
   </div>
 
+  <!-- TIEBREAKER -->
   <div id="phTiebreak" class="hidden">
     <div class="tb-label">⚡ שובר שוויון!</div>
     <div class="tb-hint">אין הגבלת זמן — הקבוצה הראשונה שמוצאת שיר עם המילה מנצחת!</div>
@@ -162,6 +209,7 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
   <div class="brow"><button class="bbtn" onclick="fullReset()">משחק חדש</button></div>
 </div>
 
+<!-- END OVERLAY -->
 <div class="ov hidden" id="ovEnd">
   <div class="ov-box">
     <h2 id="endTitle"></h2>
@@ -175,14 +223,31 @@ h1{font-family:'Secular One',sans-serif;font-size:clamp(1.8rem,6vw,2.4rem);margi
 </div>
 
 <script>
-const easyWords=["אהבה","לב","שמש","ירח","כוכב","גשם","רוח","ים","לילה","בוקר","חלום","דרך","בית","עיניים","ילד","אמא","אבא","חבר","שיר","מוזיקה","ריקוד","אור","חושך","פרח","עולם","שמיים","מים","אש","ארץ","זמן","נשמה","מלאך","גן","עץ","ציפור","שלום","חופש","חיים","יום","ערב","צבע","לבן","אדום","כחול","ירוק","זהב","רחוב","עיר","הר","נהר","שמחה","דמעה","חיוך","צחוק","כאב","תקווה","אמונה","מסע","רכבת","כביש","ילדות","זיכרון","סיפור","ספר","חופשה","חתונה","טבעת","שמלה","תמונה","צל","כדור","ענן","ברק","קשת","שלג","קיץ","חורף","אביב","שבת","לחם","יין","תפוח","דבש","עוגה","גלידה","קפה","כלב","חתול","סוס","פרפר","ארנב","אריה","יונה","מלך","מלכה","נסיכה","גיבור","שער","ניצחון","קול","שקט","מנגינה","ירושלים","תל אביב","חיפה","נגב","כנרת","ישראל","רגע","סוף","התחלה","משפחה","אח","אחות","סבא","סבתא","תינוק","חג","נר","מתנה","בלון","יום הולדת","שנה","דקה","לבד","ביחד","רחוק","קרוב","גבוה","עמוק","חזק","רך","מהר","לאט"];
-const hardWords=["מפתח","גבול","צמיחה","מראה","צעיף","פעמון","ספסל","מגדלור","ערש","סביבון","תופים","כינור","פסנתר","חצוצרה","מזמור","פזמון","תזמורת","מסלול","תחנה","פרשת דרכים","מפרש","עוגן","נמל","מצפה","אופק","מגדל","צוק","מערה","מעיין","הדים","בבואה","משב רוח","שביל החלב","זכוכית","משי","קטיפה","ענבר","אלמוג","פנינה","מסכה","קלידים","קסם","להבה","ניצוץ","אפר","עשן","דיו","חותם","מגילה","כתר","חרב","מגן","חומה","מפה","אבק","חלודה","שעווה","גחלים","מצפן","עדשה","תריס","ציר","מפרץ","שובל","כרכרה","ארובה","משקולת","פרגוד","אשליה","הד"];
+// ====== WORD BANKS ======
+const heWords=["אהבה","לב","שמש","ירח","כוכב","גשם","רוח","ים","לילה","בוקר","חלום","דרך","בית","עיניים","ילד","אמא","אבא","חבר","שיר","מוזיקה","ריקוד","אור","חושך","פרח","עולם","שמיים","מים","אש","ארץ","זמן","נשמה","גן","עץ","ציפור","שלום","חופש","חיים","יום","ערב","צבע","זהב","רחוב","עיר","הר","נהר","שמחה","דמעה","חיוך","כאב","תקווה","מסע","רכבת","ילדות","זיכרון","סיפור","חופשה","תמונה","צל","כדור","ענן","קשת","שלג","קיץ","חורף","שבת","גלידה","קפה","כלב","חתול","פרפר","אריה","מלך","נסיכה","גיבור","קול","שקט","מנגינה","משפחה","מתנה","סוד","כנף","גשר","מפתח","חלון","דלת","כובע","אוצר","מערה","כוח","קסם","חכמה","אומץ","הרפתקה","התחלה","סוף","לבד","ביחד","רחוק","קרוב","חזק","מהר","לאט","בוקר","נר","בלון","יום הולדת"];
+const enWords=["love","heart","sun","moon","star","rain","wind","sea","night","morning","dream","road","home","eyes","child","mother","father","friend","song","music","dance","light","dark","flower","world","sky","water","fire","land","time","soul","angel","garden","tree","bird","peace","freedom","life","day","evening","color","gold","street","city","mountain","river","happy","tears","smile","pain","hope","faith","journey","train","memory","story","holiday","picture","shadow","ball","cloud","rainbow","snow","summer","winter","spring","coffee","dog","cat","butterfly","lion","king","queen","princess","hero","voice","silence","melody","family","gift","secret","bridge","key","window","door","hat","treasure","cave","power","magic","wisdom","brave","adventure","beginning","end","alone","together","far","close","strong","fast","slow","baby","candle","birthday"];
+const heHard=["מפתח","גבול","צמיחה","מראה","פעמון","מגדלור","סביבון","כינור","פסנתר","חצוצרה","מזמור","תזמורת","מסלול","פרשת דרכים","מפרש","עוגן","אופק","מגדל","צוק","מעיין","הדים","משב רוח","שביל החלב","זכוכית","קטיפה","ענבר","פנינה","מסכה","קסם","להבה","ניצוץ","אפר","דיו","חותם","כתר","חרב","מגן","חומה","מצפן","אשליה"];
+const enHard=["mirror","compass","anchor","telescope","whisper","horizon","crystal","velvet","thunder","labyrinth","phoenix","silhouette","carousel","kaleidoscope","porcelain","tapestry","cathedral","emerald","chandelier","masquerade","eclipse","fortress","riddle","mosaic","orchid","paradox","quicksand","serenade","twilight","voyage","whirlpool","alchemy","beacon","chimera","dagger","fountain","glacier","illusion","jigsaw","lantern"];
 
 function sh(a){for(let i=a.length-1;i>0;i--){const j=0|Math.random()*(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
 
-let pool=[...easyWords];sh(pool);
-let hardPool=[...hardWords];sh(hardPool);
-let wi=0,hi=0,round=0,scores=[0,0],dur=60,totalRounds=10,tiv=null,rem=60,roundCount=0;
+let lang='he',pool=[],hardPool=[],wi=0,hi=0;
+let round=0,scores=[0,0],dur=60,totalRounds=10,tiv=null,rem=60,roundCount=0;
+
+function buildPools(){
+  if(lang==='he'){pool=[...heWords];hardPool=[...heHard]}
+  else if(lang==='en'){pool=[...enWords];hardPool=[...enHard]}
+  else{
+    // both — interleave evenly
+    const h=[...heWords];sh(h);const e=[...enWords];sh(e);
+    pool=[];const len=Math.max(h.length,e.length);
+    for(let i=0;i<len;i++){if(i<h.length)pool.push(h[i]);if(i<e.length)pool.push(e[i])}
+    const hh=[...heHard];sh(hh);const eh=[...enHard];sh(eh);
+    hardPool=[];const hlen=Math.max(hh.length,eh.length);
+    for(let i=0;i<hlen;i++){if(i<hh.length)hardPool.push(hh[i]);if(i<eh.length)hardPool.push(eh[i])}
+  }
+  sh(pool);sh(hardPool);wi=0;hi=0;
+}
 
 function curTeam(){return round%2===0?0:1}
 function tn(t){return'קבוצה '+(t+1)}
@@ -200,11 +265,13 @@ function updateSB(){
 function sc(t,d){scores[t]=Math.max(0,scores[t]+d);updateSB()}
 function showPh(id){['phConfig','phSetup','phPlay','phContest','phRoundEnd','phTiebreak'].forEach(p=>document.getElementById(p).classList.add('hidden'));document.getElementById(id).classList.remove('hidden')}
 
+function pickLang(l,el){lang=l;el.parentElement.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('act'));el.classList.add('act')}
 function pickDur(s,el){dur=s;el.parentElement.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('act'));el.classList.add('act')}
 function pickR(n,el){totalRounds=n;el.parentElement.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('act'));el.classList.add('act')}
 
 function beginGame(){
-  scores=[0,0];round=0;wi=0;sh(pool);sh(hardPool);
+  buildPools();
+  scores=[0,0];round=0;
   document.getElementById('sbWrap').classList.remove('hidden');
   document.getElementById('setupWord').textContent=curWord();
   updateSB();showPh('phSetup');
@@ -218,7 +285,9 @@ function startRound(){
   const lbl=document.getElementById('turnLabel');
   lbl.textContent=`תור ${tn(ct)}`;lbl.className='turn-label '+(ct===0?'t1-color':'t2-color');
   document.getElementById('tFill').className='tfill '+(ct===0?'t1':'t2');
-  rem=dur;updateTimerDisp();
+  rem=dur;roundCount=0;
+  document.getElementById('liveScore').textContent='0';
+  updateTimerDisp();
   document.getElementById('btnGo').classList.remove('hidden');
   document.getElementById('btnGo').textContent='▶ התחל';
   document.getElementById('btnPause').classList.add('hidden');
@@ -246,22 +315,29 @@ function pauseTimer(){
     document.getElementById('btnGo').textContent='▶ המשך';
   }
 }
+
+function roundPlus(){roundCount++;document.getElementById('liveScore').textContent=roundCount}
+function roundMinus(){roundCount=Math.max(0,roundCount-1);document.getElementById('liveScore').textContent=roundCount}
+
 function timesUp(){document.getElementById('contestWord').textContent=curWord();showPh('phContest')}
 
 function contest(team){
-  if(team>=0)scores[team]++;updateSB();
-  roundCount=0;const ct=curTeam();
+  if(team>=0)scores[team]++;
+  // Add round points to current team
+  scores[curTeam()]+=roundCount;
+  updateSB();
+  const ct=curTeam();
   document.getElementById('reTitle').textContent=`סיום סבב — ${tn(ct)}`;
   document.getElementById('reTitle').className='turn-label '+(ct===0?'t1-color':'t2-color');
-  document.getElementById('reAsk').textContent=`כמה שירים ${tn(ct)} שרה בסבב?`;
-  document.getElementById('reCount').textContent='0';
-  document.getElementById('reBtn').textContent=round>=totalRounds-1?'סיום משחק 🏆':`אישור → סבב ${round+2}`;
+  let summary=`${tn(ct)} שרה ${roundCount} שירים בסבב`;
+  if(team>=0)summary+=` + נקודת בונוס ל${tn(team)}`;
+  document.getElementById('reSummary').textContent=summary;
+  document.getElementById('reBtn').textContent=round>=totalRounds-1?'סיום משחק 🏆':`סבב ${round+2} →`;
   showPh('phRoundEnd');
 }
-function adjR(d){roundCount=Math.max(0,roundCount+d);document.getElementById('reCount').textContent=roundCount}
 
 function finishRound(){
-  scores[curTeam()]+=roundCount;updateSB();
+  updateSB();
   if(round>=totalRounds-1){showEndScreen();return}
   round++;wi++;
   document.getElementById('setupWord').textContent=curWord();
@@ -276,15 +352,15 @@ function showEndScreen(){
   const b=document.getElementById('endBtns');
   if(scores[0]>scores[1]){
     document.getElementById('endTitle').innerHTML='<span class="green">🎉 קבוצה 1 ניצחה!</span>';
-    document.getElementById('endMsg').textContent=`${scores[0]} לעומת ${scores[1]} שירים`;
+    document.getElementById('endMsg').textContent=`${scores[0]} לעומת ${scores[1]} נקודות`;
     b.innerHTML='<button class="nr-btn" onclick="fullReset()">משחק חדש</button>';
   }else if(scores[1]>scores[0]){
     document.getElementById('endTitle').innerHTML='<span class="green">🎉 קבוצה 2 ניצחה!</span>';
-    document.getElementById('endMsg').textContent=`${scores[1]} לעומת ${scores[0]} שירים`;
+    document.getElementById('endMsg').textContent=`${scores[1]} לעומת ${scores[0]} נקודות`;
     b.innerHTML='<button class="nr-btn" onclick="fullReset()">משחק חדש</button>';
   }else{
     document.getElementById('endTitle').innerHTML='<span class="gold">🤝 תיקו!</span>';
-    document.getElementById('endMsg').textContent=`${scores[0]} שירים לכל קבוצה`;
+    document.getElementById('endMsg').textContent=`${scores[0]} נקודות לכל קבוצה`;
     b.innerHTML='<button class="nr-btn" onclick="startTiebreak()">⚡ שובר שוויון</button><br><button class="bbtn" onclick="fullReset()" style="margin-top:10px">משחק חדש</button>';
   }
   document.getElementById('ovEnd').classList.remove('hidden');
@@ -308,7 +384,7 @@ function tbWin(team){
 
 function fullReset(){
   if(tiv){clearInterval(tiv);tiv=null}
-  scores=[0,0];round=0;wi=0;hi=0;roundCount=0;sh(pool);sh(hardPool);
+  scores=[0,0];round=0;wi=0;hi=0;roundCount=0;
   document.getElementById('ovEnd').classList.add('hidden');
   document.getElementById('sbWrap').classList.add('hidden');
   showPh('phConfig');
